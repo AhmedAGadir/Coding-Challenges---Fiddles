@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> form to multiply / divide two numbers </title>
+  </head>
+  <body>
+    <form action='#' method='post'>
+      <div>
+        <label for='first-input'> first input: </label>
+        <input type='text' id='first-input' name='input_first'>
+      </div>
+      <div>
+        <label for='second-input'> second input: </label>
+        <input type='text' id='second-input' name='second_first'>
+      </div>
+      <div class="button-holder">
+      <span class="button">
+        <button type="button" id="multiply"> Multiply </button>
+      </span> 
+      <span class="button" id="divide">
+        <button type="button"> Divide </button>
+      </span> 
+      </div> 
+      <p> The result is: </p>
+    </form>
+  </body>
+</html>
+
+form {
+  margin: 5em auto;
+  width: 400px;
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+form div + div { 
+  margin-top: 1em
+}
+
+label {
+  display: inline-block;
+  width: 90px;
+  text-align: right;
+}
+
+input {
+  font: 1em sans-serif;
+  width: 300px;
+  box-sizing: border-box;
+  border: 1px solid #999;}
+}
+
+input:focus {
+    border-color: #000;}
+
+form .button-holder {
+  text-align: center;
+}
+form .button-holder span {
+  margin: 1em;
+}
+
+let firstInput = document.getElementById('first-input');
+let secondInput = document.getElementById('second-input');
+let multiplyButton = document.querySelector('#multiply');
+let divideButton = document.querySelector('#divide');
+let paragraph = document.querySelector('p')
+let answer;
+
+multiplyButton.onclick = function() { 
+   answer = firstInput.value * secondInput.value;
+   let result = document.createElement('span');
+   result.textContent = answer;
+   paragraph.appendChild(result);
+}
+
+divideButton.onclick = function() { 
+   answer = firstInput.value / secondInput.value;
+   let result = document.createElement('span');
+   result.textContent = answer;
+   paragraph.appendChild(result);
+}
+
+      
