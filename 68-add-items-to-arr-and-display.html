@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Write a JavaScript program to add items in an blank array and display the items.</title>
+  <style>
+  	.button {
+	  border: 1px solid #CCC;
+	  padding: 2px;
+	  margin: 2px;
+	  border-radius: 5px;
+	}
+
+	.button:active {
+	  background-color: #C6C2C2;
+	  box-shadow: 0 0 10px #A1C1CD;
+	}
+  </style>
+</head>
+<body>
+
+  <div id='aa'>
+    <input type="text">
+    <span class="button">Add</span>
+    <span class="button">Display</span>
+  </div>
+<script >
+	//my solution 
+
+let input = document.querySelector('input');
+let addButton = document.getElementsByTagName('span')[0];
+let displayButton = document.getElementsByClassName('button')[1];
+let arr = []
+
+addButton.onclick = function() {
+   arr.push(input.value);
+   alert(`${input.value} was added to the array`)
+   input.value = "";
+}
+
+let aa = document.getElementById("aa");
+let hr = document.createElement("hr");
+let para = document.createElement("p");
+
+displayButton.onclick = function() { 
+  let content = "";
+  for (let i = 0; i < arr.length; i++){
+    content += 'Element ' + i + ' = ' + arr[i] + "<br>" 
+  }
+  para.innerHTML = content;
+  hr.appendChild(para);
+  aa.appendChild(hr);
+}
+
+/* 
+// SOLUTION
+
+// HTML & CSS
+
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<style>
+body {padding-top:50px} 
+</style> 
+</head>
+<body>
+<input type="text" id="text1">
+<input type="button" id="button1" value="Add" onclick="add_element_to_array();">
+<input type="button" id="button2" value="Display" onclick="display_array();">
+<div id="Result"></div> 
+</body>
+</html>
+
+// JS
+
+var x = 0;
+var array = Array();
+
+function add_element_to_array()
+{
+ array[x] = document.getElementById("text1").value;
+ alert("Element: " + array[x] + " Added at index " + x);
+ x++;
+ document.getElementById("text1").value = "";
+}
+
+function display_array()
+{
+   var e = "<hr/>";   
+    
+   for (var y=0; y<array.length; y++)
+   {
+     e += "Element " + y + " = " + array[y] + "<br/>";
+   }
+   document.getElementById("Result").innerHTML = e;
+}
+ */
+</script>
+</body>
+</html>
