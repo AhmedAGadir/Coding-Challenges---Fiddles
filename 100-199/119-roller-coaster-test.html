@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset = "utf-8">
+      <title>DOM exercises</title>
+    </head>
+    <body>
+      <div id='rollercoaster'>
+      
+      </div>
+      <script>
+        /* Exercise: Roller Coaster Text
+You now know the API for manipulating a DOM tree. For this exercise, put all these pieces together to write code that takes a string and renders it with undulating font sizes. Each letter should be in its own 'span' tag, and each span's .style.fontSize property starts at '10px' and increases by 5 pixels until the middle of the string is reached, before shrinking back to 10 pixels. Here is an example: */
+
+var text = 'Hello World!';
+var div = document.getElementById('rollercoaster');
+
+// method 1 - ideal solution - apparently using innerHTML is bad because it creates security holes.     /
+for (let i = 0, x = 10; i < text.length; i++) {
+    let span = document.createElement('span');
+    span.appendChild(document.createTextNode(text[i])); 
+    span.style.fontSize = x + 'px';
+    div.appendChild(span)
+    if (i < text.length/2 - 1) x += 5; else x -=5;
+}
+console.log(div);
+
+// method 2 - with innerHTML    
+for (let i = 0, x = 10; i < text.length; i++) {
+    let span = document.createElement('span');
+    span.textContent = text[i];
+    span.style.fontSize = x + 'px';
+    div.innerHTML += span.outerHTML;
+    if (i < text.length/2 - 1) x += 5; else x -=5;
+} 
+console.log(div);
+
+// method 3 - dont really like this solution      
+for (let i = 0, x = 10; i < text.length; i++) {
+    div.innerHTML += '<span style="font-size: ' + x + 'px;">' + text[i] + '</span>';
+    if (i < text.length/2 - 1) x += 5; else x -=5;
+}
+console.log(div);
+      </script>
+    </body>
+  </html>
+

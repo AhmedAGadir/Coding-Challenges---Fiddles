@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  </head>
+
+  <body>
+    <p>🎈</p>
+
+
+    <script>
+    	let p = document.querySelector('p');
+let size = 16;
+p.style.fontSize = size + 'px';
+
+function change(e) {
+  if (e.key === 'ArrowUp') {
+    if (size > 75) {
+      p.textContent = '💥';
+      window.removeEventListener('keydown', change)
+    } else {
+      e.preventDefault();
+      size *= 1.1;
+      p.style.fontSize = size + 'px';
+    }
+  } else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    size *= 0.9;
+    p.style.fontSize = size + 'px';
+  }
+}
+
+window.addEventListener('keydown', change);
+
+//THEIR SOLUTION - remove this whole section for code to work
+ 
+/* <p>🎈</p>
+
+<script>
+  
+let p = document.querySelector('p');
+let size = 16;
+p.style.fontSize = size + 'px';
+
+function change(e) {
+  if (e.key === 'ArrowUp') {
+    if (size > 75) {
+      p.textContent = '💥';
+      window.removeEventListener('keydown', change)
+    }
+    else {
+      e.preventDefault();
+      size *= 1.1;
+      p.style.fontSize = size + 'px';
+    }
+  }
+  else if (e.key === 'ArrowDown'){
+    e.preventDefault();
+    size *= 0.9;
+    p.style.fontSize = size + 'px'; 
+  }
+}  
+    
+window.addEventListener('keydown', change);
+</script> 
+ */
+    </script>
+  </body>
+
+</html>

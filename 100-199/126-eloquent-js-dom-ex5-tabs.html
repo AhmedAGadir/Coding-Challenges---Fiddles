@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<tab-panel>
+  <div data-tabname="one">Tab one</div>
+  <div data-tabname="two">Tab two</div>
+  <div data-tabname="three">Tab three</div>
+</tab-panel>
+
+<script>
+	// MY SOLUTION 
+
+function asTabs(node) {
+  
+  let allDivs = document.querySelectorAll('div');
+  
+  for (let child of Array.from(node.children)){
+    let button = document.createElement('button');
+    button.textContent = child.getAttribute('data-tabname'); 
+    node.insertBefore(button,allDivs[0])
+  }
+
+  let allButtons = document.querySelectorAll('button');
+    
+  function selectTab(event) {
+    for (let i = 0; i < allDivs.length; i++){
+      let selectedButton = allButtons[i] === event.target;
+      allButtons[i].style.cssText = selectedButton ? 'color: red;' : 'color: ;';
+      let selectedDiv = allDivs[i].getAttribute('data-tabname') === event.target.textContent;
+      allDivs[i].style.cssText = selectedDiv ? 'display: ;' : 'display: none;';
+    } 
+  }
+  node.addEventListener('click', selectTab); 
+  allButtons[0].click();
+}
+
+asTabs(document.querySelector("tab-panel"));
+ 
+/* Solution 
+
+  function asTabs(node) {
+    let tabs = Array.from(node.children).map(node => {
+      let button = document.createElement("button");
+      button.textContent = node.getAttribute("data-tabname");
+      let tab = {node, button};
+      button.addEventListener("click", () => selectTab(tab));
+      return tab;
+    });
+
+    let tabList = document.createElement("div");
+    for (let {button} of tabs) tabList.appendChild(button);
+    node.insertBefore(tabList, node.firstChild);
+
+    function selectTab(selectedTab) {
+      for (let tab of tabs) {
+        let selected = tab == selectedTab;
+        tab.node.style.display = selected ? "" : "none";
+        tab.button.style.color = selected ? "red" : "";
+      }
+    }
+    selectTab(tabs[0]);
+  }
+
+  asTabs(document.querySelector("tab-panel")); */
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="hi_button">Say Hi</button>
+	<button id="bye_button">Say Bye</button>
+	<div id="output"></div>
+
+	<script>
+		let hi = document.getElementById('hi_button');
+let bye = document.getElementById('bye_button');
+let output = document.getElementById('output');
+let test = 'goodbye';
+
+function sayHi() {
+	output.innerHTML = 'Hi!';
+}
+
+function sayBye(text) {
+	output.innerHTML = text;
+}
+
+// This works fine, no arguments passed with function
+// If you typed sayHi in the console it would return the function defenition, not call it.
+// So it seems you are passing in a function or defining one, not calling it.
+hi.addEventListener('click', sayHi);
+
+// Uncomment and this runs without even a click
+/*  bye.addEventListener('click', sayBye('byebye'));  */
+
+// Same behavior
+/*  bye.addEventListener('click', sayBye(test));   */
+
+// This works as intended
+ bye_button.addEventListener('click', () => {
+  sayBye(test);
+}); 
+
+	</script>
+</body>
+</html>

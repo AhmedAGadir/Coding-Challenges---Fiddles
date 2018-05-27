@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		  .trail1 { /* className for the trail elements */
+    position: absolute;
+    height: 6px; width: 6px;
+    background: teal;
+  }
+  
+  .trail2 { /* className for the trail elements */
+    position: absolute;
+    height: 6px; width: 6px;
+    background: orange;
+  }
+  
+  .trail3 { /* className for the trail elements */
+    position: absolute;
+    height: 6px; width: 6px;
+    background: gold;
+  }
+  body {
+    height: 300px;
+  }
+
+	</style>
+</head>
+<body>
+	
+	<script>
+		
+  document.body.addEventListener('mousemove', trail);
+  
+  function trail(e) {   
+
+    let div1 = document.createElement('div');
+    div1.classList.add('trail1');
+    div1.style.left = (e.clientX + 5) + "px";
+    div1.style.top = (e.clientY + 5) + "px";
+    document.body.appendChild(div1);
+    let removeTrail1 = setTimeout(() => {
+      document.body.removeChild(div1)
+    }, 250);
+
+    let div2 = document.createElement('div');
+    div2.classList.add('trail2');
+    div2.style.left = (e.clientX + 8) + "px";
+    div2.style.top = (e.clientY + 8) + "px";
+    document.body.appendChild(div2);
+    let removeTrail2 = setTimeout(() => {
+      document.body.removeChild(div2)
+    }, 250);    
+
+    let div3 = document.createElement('div');
+    div3.classList.add('trail3');
+    div3.style.left = (e.clientX + 11) + "px";
+    div3.style.top = (e.clientY + 11) + "px";
+    document.body.appendChild(div3);
+    let removeTrail3 = setTimeout(() => {
+      document.body.removeChild(div3)
+    }, 250);
+  }
+	</script>
+</body>
+</html>
