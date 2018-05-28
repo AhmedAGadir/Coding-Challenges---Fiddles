@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset=utf-8 />
+    <title>Display a random image.</title>
+    <style>
+    body {
+  margin-top: 30px;
+}
+</style>
+  </head>
+
+  <body>
+
+    <div>
+      <button id="jsstyle">Show Image</button>
+    </div>
+<script>
+	// Write a JavaScript program to display a random image (clicking on a button)
+
+let imgs = [{
+  src: "https://images.pexels.com/photos/262272/pexels-photo-262272.jpeg?w=940&h=650&auto=compress&cs=tinysrgb",
+  width: "940",
+  height: "627",
+}, {
+  src: "https://images.pexels.com/photos/45242/wolf-torque-wolf-moon-cloud-45242.jpeg?w=940&h=650&auto=compress&cs=tinysrgb",
+  width: "940",
+  height: "583",
+}, {
+  src: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?w=940&h=650&auto=compress&cs=tinysrgb",
+  width: "940",
+  height: "627",
+}];
+
+let div = document.querySelector('div')
+let img = document.createElement('img');
+div.appendChild(img);
+
+function displayRandomImage() {
+  let random = Math.floor(Math.random() * 3);
+  img.src = imgs[random].src;
+  img.style.width = imgs[random].width + 'px';
+  img.style.height = imgs[random].height + 'px';
+  // console.log(img.clientWidth, img.clientHeight)
+}
+
+document.getElementById('jsstyle').addEventListener('click', displayRandomImage)
+</script>
+  </body>
+
+</html>

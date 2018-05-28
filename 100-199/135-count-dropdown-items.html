@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset=utf-8 />
+<title></title>
+</head><body>
+<form>
+<select id="colorSelect">
+<option>Red</option>
+<option>Green</option>
+<option>White</option>
+<option>Black</option>
+</select>
+<input type="button" value="Count and Display">
+</form>
+<script>
+	// JavaScript: Count and display the items of a dropdown list, in an alert window
+
+let options = document.getElementById('colorSelect').children;
+
+let alertMessage = `the dropdown menu contains ${options.length} options:\n`
+for (let x = 0; x < options.length; x++) 
+  alertMessage += `(${x+1}) ${options[x].textContent}\n`;
+
+document.querySelector('input').addEventListener('click', () => alert(alertMessage));
+
+</script>
+</body></html>
