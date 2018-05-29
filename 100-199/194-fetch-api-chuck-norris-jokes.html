@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  	fetch('https://api.chucknorris.io/jokes/random')
+.then(res => res.json())
+.then(data => {
+/* 	let para = document.createElement('p');
+	  para.textContent = data.value;
+	document.body.appendChild(document.createElement('p').textContent = data.value) */
+  document.body.appendChild(document.createTextNode(data.value))
+})
+.catch(err => console.log(err))
+  </script>
+</body>
+</html>

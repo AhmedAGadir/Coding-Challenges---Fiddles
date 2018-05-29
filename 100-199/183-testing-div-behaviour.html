@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .div1 {
+        background: green;
+        height: 50px;
+        width: 100px;
+        /* solution - however html had to also be modified, the float: left; fix is better */
+        white-space-collapse: discard;
+      }
+
+      .div2 {
+        height: 50px;
+        width: 50px;
+        background: blue;
+        display: inline-block;
+      }
+</style>
+</head>
+<body>
+	<div class='div1'>
+  <div class='div2'></div><div class='div2'></div>
+</div>
+
+<!-- https://stackoverflow.com/questions/29309002/sum-of-elements-width-is-100-but-the-last-element-goes-to-next-line -->
+</body>
+</html>
