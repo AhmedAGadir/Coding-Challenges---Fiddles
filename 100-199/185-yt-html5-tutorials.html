@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Canvas resize</title>
+  <title>HTML5 Canvas YT tutorial </title>
   <style>
     body {
       margin: 0;
@@ -72,13 +72,30 @@
 
 // make the circle move 
 
+let maxRadius = 40;
 
-function Circle(x, y, dx, dy, radius, color) {
+var mouse = {
+  x: undefined,
+  y: undefined
+}
+
+window.addEventListener('mousemove', e => {
+  mouse.x = event.x;
+  mouse.y = event.y;
+})
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+})
+
+function Circle(x, y, dx, dy, radius, minRadius, color) {
   this.x = x;
   this.y = y;
   this.dx = dx;
   this.dy = dy;
   this.radius = radius;
+  this.minRadius = minRadius;
   this.color = color;
 }
 
@@ -99,27 +116,37 @@ Circle.prototype.update = function() {
 
   this.x += this.dx;
   this.y += this.dy;
+ 
+  // interactivity 
+  if (mouse.x - this.x < 50 && mouse.x - this.x > -50 && mouse.y - this.y <50  && mouse.y - this.y > -50) {
+    if (this.radius < maxRadius) 
+      this.radius += 1;
+    c.fillStyle = this.color;
+    c.fill();
+  } else if (this.radius > this.minRadius) {
+  this.radius -= 1;
+  } 
 }
 
 
 let circleArray = [];
+let colorArr = ['#ffbf00','cyan','#ff0080'];
 
-
-for (let i = 0; i < 200; i++) {
-  var radius = i/4;
+for (let i = 0; i < 500; i++) {
+  var radius = 2;
   var x = Math.random() * (innerWidth - radius * 2) + radius;
   var y = Math.random() * (innerHeight - radius * 2) + radius;
-  var dx = (Math.random() - 0.5) * 15;
-  var dy = (Math.random() - 0.5) * 15;
+  var dx = (Math.random() - 0.5) * 3;
+  var dy = (Math.random() - 0.5) * 3;
 
   // let r = Math.floor(Math.random()*255);
   // let g = Math.floor(Math.random()*255);
   // let b = Math.floor(Math.random()*255);
   // var color = `rgb(${r},${g},${b})`;
 
-  let color = 'cyan';
-
-  var circle = new Circle(x, y, dx, dy, radius, color);
+  let color = colorArr[Math.floor(Math.random() * colorArr.length)];
+  let minRadius = Math.floor(Math.random() * 6) + 2;
+  var circle = new Circle(x, y, dx, dy, radius, minRadius, color);
   circleArray.push(circle)
 }
 
@@ -136,6 +163,8 @@ function animate() {
 }
 
 animate();
+
+
 
 </script>
 </body>
