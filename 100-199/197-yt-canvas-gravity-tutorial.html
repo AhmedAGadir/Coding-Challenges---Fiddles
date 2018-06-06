@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas Gravity YT tutorial </title>
+  <style>
+    body {
+      margin: 0;
+    }
+    canvas {
+      /*border: 1px solid black;*/
+      }
+    </style>
+</head>
+<body>
+
+  <canvas></canvas>
+  
+<script>
+  // better boilerplate in this document than the first 
+
+  let canvas = document.querySelector('canvas');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let c = canvas.getContext('2d');
+
+  var mouse = {
+    x: innerWidth/2,
+    y: innerHeight/2
+  }
+
+  window.addEventListener('mousemove', e => {
+    mouse.x = event.x;
+    mouse.y = event.y;
+  })
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    init();
+  })
+
+  function Ball(x, y, radius, color) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.color = color;
+  }
+
+  Ball.prototype.draw = function() {
+    c.beginPath();
+    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    // c.strokeStyle = this.color;
+    // c.stroke();
+    c.fillStyle = this.color;
+    c.fill();
+  }
+
+  Ball.prototype.draw = function() {
+
+
+  }
+
+  // Implementation 
+  let ballArray = [];
+  let ball;
+  function init() {
+    ball = new Ball(canvas.width/2, canvas.height/2, 30, 'red');
+    ballArray.push(ball)
+  }
+
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+    // clear the canvas - c.clearRect(x, y, width, height)
+    c.clearRect(0, 0, innerWidth, innerHeight);
+    // c.fillText("HTML CANVAS BOILERPLATE", mouse.x, mouse.y)
+    
+    ballArray.forEach(ball => {
+      ball.draw();
+      ball.update();
+    })
+  }
+
+
+  init()
+  animate();
+
+  </script>
+</body>
+</html>

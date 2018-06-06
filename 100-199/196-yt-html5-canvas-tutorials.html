@@ -20,7 +20,7 @@
 <script>
   /* c is short for context */
   let canvas = document.querySelector('canvas');
-  canvas.width = window.innerWidth;
+  canvas.width = window.innerWidth; //can just use = innerWidth since all global variables are technically attributes on the window object.
   canvas.height = window.innerHeight;
   canvas.style.backgroundColor = "grey";
   let c = canvas.getContext('2d');
@@ -104,7 +104,8 @@ Circle.prototype.draw = function() {
   c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
   c.strokeStyle = this.color;
   c.stroke();
-  // c.fill()
+  // c,fillStyle = this.color;
+  // c.fill();
 }
 
 Circle.prototype.update = function() {
@@ -131,6 +132,7 @@ Circle.prototype.update = function() {
 
 let circleArray = [];
 let colorArr = ['#ffbf00','cyan','#ff0080'];
+// get complementary colors - https://www.sessions.edu/color-calculator/
 
 for (let i = 0; i < 500; i++) {
   var radius = 2;
