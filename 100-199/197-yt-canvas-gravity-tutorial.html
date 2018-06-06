@@ -41,9 +41,10 @@
     init();
   })
 
-  function Ball(x, y, radius, color) {
+  function Ball(x, y, dy, radius, color) {
     this.x = x;
     this.y = y;
+    this.dy = dy;
     this.radius = radius;
     this.color = color;
   }
@@ -56,17 +57,25 @@
     c.fillStyle = this.color;
     c.fill();
   }
+  
+  let gravity = 1;
+  let friction = 0.99;
 
-  Ball.prototype.draw = function() {
-
-
+  Ball.prototype.update = function() {
+    if (this.y + this.radius > canvas.height) {
+      this.dy = -this.dy * friction;
+    } else {
+      this.dy += gravity; // adding gravity 
+      //console.log(this.dy)
+    }
+    this.y += this.dy
   }
 
   // Implementation 
   let ballArray = [];
   let ball;
   function init() {
-    ball = new Ball(canvas.width/2, canvas.height/2, 30, 'red');
+    ball = new Ball(canvas.width/2, canvas.height/2, 2, 30, 'red');
     ballArray.push(ball)
   }
 
