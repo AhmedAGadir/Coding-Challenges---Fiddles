@@ -19,7 +19,7 @@ antiOptimize(() => console.log('hi'))
 
  // using generators 
 
-/* function *myGen(task) {
+ function *myGen(task) {
   let a = yield new Promise((resolve, reject) => {
     setTimeout(() => resolve(task()), 2000)
   });
@@ -34,5 +34,5 @@ function antiOptimize(task) {
 }
 
 antiOptimize(() => 'hi') 
- */
+ 
 
