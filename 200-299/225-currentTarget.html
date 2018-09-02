@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p {
+		  background: orange;
+		}
+	</style>
+</head>
+<body>
+	
+	<button><p>Button</p></button>
+
+	<script type="text/javascript">
+		let button = document.querySelector('button');
+
+		button.addEventListener('click', e => {
+			console.log(e.currentTarget, this)
+		})
+	</script>
+</body>
+</html>
+
+
+
